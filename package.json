@@ -14,7 +14,19 @@
     "fix": "biome check --fix",
     "release": "pnpm run fix && pnpm run build && changelogen --release --push --publish"
   },
-  "keywords": [],
+  "keywords": [
+    "html",
+    "parser",
+    "ast",
+    "angular",
+    "vue",
+    "svelte",
+    "react",
+    "jsx",
+    "lit",
+    "template",
+    "zero-dependency"
+  ],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
