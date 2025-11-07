@@ -1,0 +1,63 @@
+{
+  "name": "fragmint",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Minimal, zero-dependency parser for modern frontend framework templates. Produces a compact AST of tagnames and attributes for further tooling and analysis.",
+  "main": "./dist/index.cjs",
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "test": "tsx ./scripts/test-runner.ts",
+    "test:watch": "tsx ./scripts/test-runner.ts",
+    "test:templates": "tsx templates/test.ts",
+    "check": "biome check",
+    "fix": "biome check --fix",
+    "release": "pnpm run fix && pnpm run build && changelogen --release --push --publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^24.10.0",
+    "changelogen": "^0.5.7",
+    "dotenv": "^17.2.3",
+    "tsdown": "^0.16.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./angular": {
+      "import": "./dist/angular.mjs",
+      "require": "./dist/angular.cjs"
+    },
+    "./html": {
+      "import": "./dist/html.mjs",
+      "require": "./dist/html.cjs"
+    },
+    "./jsx": {
+      "import": "./dist/jsx.mjs",
+      "require": "./dist/jsx.cjs"
+    },
+    "./lit": {
+      "import": "./dist/lit.mjs",
+      "require": "./dist/lit.cjs"
+    },
+    "./svelte": {
+      "import": "./dist/svelte.mjs",
+      "require": "./dist/svelte.cjs"
+    },
+    "./vue": {
+      "import": "./dist/vue.mjs",
+      "require": "./dist/vue.cjs"
+    },
+    "./package.json": "./package.json"
+  }
+}
