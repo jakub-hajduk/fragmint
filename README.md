@@ -12,54 +12,26 @@ Because I want to check the usage of web component libraries, their  across vari
 
 ## Usage
 
-To use Fragmint, you can either detect the framework automatically or specify a strategy explicitly.
-
-### Automatic Framework Detection
-
-The `detectFramework` function automatically determines the appropriate parsing strategy based on the file name and source code.
+To use Fragmint, you need to select a parsing strategy explicitly. This is useful when you know the framework in advance or want to enforce a specific parsing behavior.
 
 ```typescript
-import { detectFramework, parseWithStrategy } from 'fragmint';
+import { angular, parse } from 'fragmint';
 
 const source = '<div class="foo" [bar]="baz"></div>';
-const filename = 'my-component.component.ts';
-
-const strategy = detectFramework(filename, source);
-const ast = parseWithStrategy(source, strategy);
-
-console.log(ast);
-```
-
-### Explicit Strategy Selection
-
-You can also select a parsing strategy explicitly. This is useful when you know the framework in advance or want to enforce a specific parsing behavior.
-
-```typescript
-import { angular, parseWithStrategy } from 'fragmint';
-
-const source = '<div class="foo" [bar]="baz"></div>';
-const ast = parseWithStrategy(source, angular);
+const ast = parse(source, angular);
 
 console.log(ast);
 ```
 
 ## API
 
-### `detectFramework(filename: string, source: string): ParserPlugin`
+### `parse(source: string, plugin: ParserPlugin): ASTNode[][]`
 
-Detects the most appropriate parsing strategy based on the file name and source code.
-
--   `filename`: The name of the file to analyze.
--   `source`: The source code to analyze.
--   **Returns**: A `ParserPlugin` object that can be used with `parseWithStrategy`.
-
-### `parseWithStrategy(source: string, strategy: ParserPlugin): ASTNode[]`
-
-Parses the source code using the specified strategy.
+Parses the source code using the specified plugin.
 
 -   `source`: The source code to parse.
--   `strategy`: The parsing strategy to use.
--   **Returns**: An array of `ASTNode` objects representing the root nodes of the parsed templates.
+-   `plugin`: The parsing plugin to use. By default, it uses the `html` plugin.
+-   **Returns**: An array of arrays of `ASTNode` objects. Each inner array represents a parsed template.
 
 ### `ParserPlugin`
 
@@ -77,8 +49,6 @@ Each strategy has the following properties:
 -   `name`: The name of the strategy (e.g., 'vue', 'angular').
 -   `extractTemplates`: A function that extracts one or more templates from the source code.
 -   `extractAttributes`: A function that extracts attributes from a template.
--   `validateByFilename`: An optional function that validates if the strategy is appropriate for a given file name.
--   `validateByCode`: An optional function that validates if the strategy is appropriate for a given source code.
 
 ### `ASTNode`
 
