@@ -1,6 +1,6 @@
 {
   "name": "fragmint",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "Minimal, zero-dependency parser for modern frontend framework templates. Produces a compact AST of tagnames and attributes for further tooling and analysis.",
   "main": "./dist/index.cjs",
@@ -47,7 +47,9 @@
   },
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
