@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      fragmint:
-        specifier: 'link:'
-        version: 'link:'
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4

@@ -13,6 +13,6 @@ export default defineConfig({
   dts: {
     sourcemap: true,
   },
-  format: ['es', 'cjs'],
+  format: ['esm', 'cjs'],
   exports: true,
 });
